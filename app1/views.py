@@ -27,3 +27,12 @@ def add_product(request):
         serializers.save()
         return Response(serializers.data)
     return Response(serializers.errors)
+
+@api_view(['GET'])
+def del_electronics(request, electronic_id):
+    try:
+        el = Electronics.objects.get(electronic_id = electronic_id)
+        el.delete()
+        return Response("Deleted Successfully")
+    except:
+        return Response("Invalid!!")
