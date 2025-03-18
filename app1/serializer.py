@@ -3,5 +3,5 @@ from .models import *
 
 class ElectronicsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = electronics
+        model = Electronics
         fields = '__all__'
