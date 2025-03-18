@@ -11,6 +11,15 @@ def electronics_all(request):
     serializers = ElectronicsSerializer(electronics, many=True)
     return Response(serializers.data)
 
+@api_view(['GET'])
+def electronics_one(request, electronic_id):
+    try:
+        electronic = Electronics.objects.get(electronic_id = electronic_id)
+        serializers = ElectronicsSerializer(electronic, many = False)
+        return Response(serializers.data)
+    except:
+        return Response(serializers.errors)
+
 @api_view(['POST'])
 def add_product(request):
     serializers = ElectronicsSerializer(data=request.data)
