@@ -41,7 +41,7 @@ def del_electronics(request, electronic_id):
 def electronic_update(request, electronic_id):
     try:
         el = Electronics.objects.get(electronic_id = electronic_id)
-        ser = ElectronicsSerializer(el, data = request.data)
+        ser = ElectronicsSerializer(el, data = request.data, partial=True)
         if ser.is_valid():
             ser.save()
             return Response(ser.data)
