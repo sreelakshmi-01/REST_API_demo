@@ -36,3 +36,15 @@ def del_electronics(request, electronic_id):
         return Response("Deleted Successfully")
     except:
         return Response("Invalid!!")
+
+@api_view(['GET'])
+def electronic_update(request, electronic_id):
+    try:
+        el = Electronics.objects.get(electronic_id = electronic_id)
+        ser = ElectronicsSerializer(el, data = request.data)
+        if ser.is_valid():
+            ser.save()
+            return Response(ser.data)
+        return Response(ser.errors)
+    except:
+        return Response(ser.errors)
