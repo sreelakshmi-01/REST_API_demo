@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import *
 from .serializer import *
-from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
@@ -37,7 +36,7 @@ def del_electronics(request, electronic_id):
     except:
         return Response("Invalid!!")
 
-@api_view(['GET'])
+@api_view(['PUT'])
 def electronic_update(request, electronic_id):
     try:
         el = Electronics.objects.get(electronic_id = electronic_id)
