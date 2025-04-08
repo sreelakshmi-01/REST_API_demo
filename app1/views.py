@@ -27,7 +27,7 @@ def add_product(request):
         return Response(serializers.data)
     return Response(serializers.errors)
 
-@api_view(['GET'])
+@api_view(['DELETE'])
 def del_electronics(request, electronic_id):
     try:
         el = Electronics.objects.get(electronic_id = electronic_id)
